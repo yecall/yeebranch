@@ -1,0 +1,24 @@
+[package]
+name = "yee-branch-runtime-wasm"
+version = "0.6.0"
+authors = ["YeeCo <contact@yeefoundation.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+yee-branch-runtime = { path = "..", default-features = false }
+
+[features]
+default = []
+std = [
+	"yee-branch-runtime/std",
+]
+
+[profile.release]
+panic = "abort"
+lto = true
+
+[workspace]
+members = []
