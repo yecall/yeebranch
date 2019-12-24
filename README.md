@@ -70,7 +70,7 @@ Start the node
 
 ## Contributing
 
-Feel free to dive in! [Open an issue](./issues/new).
+Feel free to dive in! [Open an issue](https://github.com/yeeco/yeebranch/issues).
 
 ### Contributors
 
