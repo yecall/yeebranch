@@ -33,6 +33,14 @@ substrate-client = {  git = "https://github.com/yeeco/substrate.git", branch = "
 basic-authorship = { package = "substrate-basic-authorship", git = "https://github.com/yeeco/substrate.git", branch = "yee-v1.0" }
 yee-branch-runtime = { path = "runtime" }
 signal-hook = { version = "0.1.11", features = ["tokio-support"] }
+structopt = "0.2"
+
+# yeeroot
+yee-bootnodes-router = { package = "yee-bootnodes-router", git = "https://github.com/yeeco/yeeroot", tag = "v0.5" }
+
+# yeebranch
+yee-root-port = { package = "yee-root-port", path = "srml/yee-root-port", default_features = false }
+yee-branch-dev = { package = "yee-branch-dev", path = "dev" }
 
 [build-dependencies]
 vergen = "3"

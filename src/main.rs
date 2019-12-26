@@ -6,18 +6,20 @@
 mod chain_spec;
 mod service;
 mod cli;
+mod custom_param;
+mod dev_param;
 
 pub use substrate_cli::{VersionInfo, IntoExit, error};
 
 fn run() -> cli::error::Result<()> {
 	let version = VersionInfo {
-		name: "Substrate Node",
+		name: "Yee Branch Node",
 		commit: env!("VERGEN_SHA_SHORT"),
 		version: env!("CARGO_PKG_VERSION"),
-		executable_name: "node-template",
-		author: "Anonymous",
-		description: "Template Node",
-		support_url: "support.anonymous.an",
+		executable_name: "YeeBranch",
+		author: "YeeCo",
+		description: "Yee Branch Node",
+		support_url: "contact@yeefoundation.com",
 	};
 	cli::run(::std::env::args(), cli::Exit, version)
 }

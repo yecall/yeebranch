@@ -21,6 +21,10 @@ use substrate_executor::native_executor_instance;
 use substrate_service::construct_service_factory;
 
 pub use substrate_executor::NativeExecutor;
+use yee_bootnodes_router::BootnodesRouterConf;
+
+pub const IMPL_NAME : &str = "yee-branch-node";
+
 // Our native executor instance.
 native_executor_instance!(
 	pub Executor,
@@ -32,6 +36,8 @@ native_executor_instance!(
 #[derive(Default)]
 pub struct NodeConfig {
 	inherent_data_providers: InherentDataProviders,
+	pub root_bootnodes_router_conf: Option<BootnodesRouterConf>,
+	pub root_port: Option<u16>,
 }
 
 construct_simple_protocol! {

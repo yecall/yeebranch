@@ -1,6 +1,5 @@
 use crate::service;
 use futures::{future, Future, sync::oneshot};
-use std::cell::RefCell;
 use tokio::runtime::Runtime;
 pub use substrate_cli::{VersionInfo, IntoExit, error};
 use substrate_cli::{informant, parse_and_execute, NoCustom, TriggerExit};
@@ -13,6 +12,8 @@ use futures::sync::oneshot::Sender;
 use signal_hook::{iterator::Signals, SIGUSR1, SIGINT, SIGTERM};
 use std::thread;
 use std::fmt::Debug;
+use crate::custom_param::{YeeCliConfig, process_custom_args};
+use crate::dev_param::process_dev_param;
 
 /// Parse command line arguments into service configuration.
 pub fn run<I, T, E>(args: I, exit: E, version: VersionInfo) -> error::Result<()> where
@@ -20,16 +21,20 @@ pub fn run<I, T, E>(args: I, exit: E, version: VersionInfo) -> error::Result<()>
 	T: Into<std::ffi::OsString> + Clone,
 	E: IntoExit,
 {
-	parse_and_execute::<service::Factory, NoCustom, NoCustom, _, _, _, _, _>(
-		load_spec, &version, "substrate-node", args, exit,
-	 	|exit, _custom_args, config| {
+	parse_and_execute::<service::Factory, NoCustom, YeeCliConfig, _, _, _, _, _>(
+		load_spec, &version, service::IMPL_NAME, args, exit,
+	 	|exit, mut custom_args, mut config| {
 			info!("{}", version.name);
 			info!("  version {}", config.full_version());
 			info!("  by {}, 2017, 2018", version.author);
 			info!("Chain specification: {}", config.chain_spec.name());
 			info!("Node name: {}", config.name);
 			info!("Roles: {:?}", config.roles);
-			let runtime = Runtime::new().map_err(|e| format!("{:?}", e))?;
+
+		    process_dev_param::<service::Factory>(&mut config, &mut custom_args).map_err(|e| format!("{:?}", e))?;
+		    process_custom_args::<service::Factory>(&mut config, &custom_args).map_err(|e| format!("{:?}", e))?;
+
+		    let runtime = Runtime::new().map_err(|e| format!("{:?}", e))?;
 			let executor = runtime.executor();
 			match config.roles {
 				ServiceRoles::LIGHT => run_until_exit(

@@ -187,6 +187,11 @@ impl sudo::Trait for Runtime {
 	type Proposal = Call;
 }
 
+impl yee_root_port::Trait for Runtime {
+	type SessionKey = AuthorityId;
+	type ShardNum = u16;
+}
+
 /// Used for the module template in `./template.rs`
 impl template::Trait for Runtime {
 	type Event = Event;
@@ -205,6 +210,7 @@ construct_runtime!(
 		Indices: indices,
 		Balances: balances,
 		Sudo: sudo,
+		RootPort: yee_root_port::{Module, Call, Storage, Config<T>},
 		// Used for the module template in `./template.rs`
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
 	}

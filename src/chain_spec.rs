@@ -1,7 +1,7 @@
 use primitives::{ed25519, sr25519, Pair};
 use yee_branch_runtime::{
 	AccountId, GenesisConfig, ConsensusConfig, TimestampConfig, BalancesConfig,
-	SudoConfig, IndicesConfig,
+	SudoConfig, IndicesConfig, RootPortConfig
 };
 use substrate_service;
 
@@ -115,5 +115,10 @@ fn testnet_genesis(initial_authorities: Vec<AuthorityId>, endowed_accounts: Vec<
 		sudo: Some(SudoConfig {
 			key: root_key,
 		}),
+		yee_root_port: Some(RootPortConfig {
+			genesis_owner_session_key: initial_authorities.get(0).unwrap().clone(),
+			genesis_sharding_count: 4,
+		}),
+
 	}
 }

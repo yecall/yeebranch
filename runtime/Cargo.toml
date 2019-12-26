@@ -26,6 +26,7 @@ client = { package = "substrate-client", git = "https://github.com/yeeco/substra
 consensus-aura = { package = "substrate-consensus-aura-primitives", git = "https://github.com/yeeco/substrate.git", default_features = false, branch = "yee-v1.0" }
 offchain-primitives = { package = "substrate-offchain-primitives", git = "https://github.com/yeeco/substrate.git", default-features = false, branch = "yee-v1.0" }
 consensus_authorities = { package = "substrate-consensus-authorities", git = "https://github.com/yeeco/substrate.git", default-features = false, branch = "yee-v1.0" }
+yee-root-port = { package = "yee-root-port", path = "../srml/yee-root-port", default_features = false }
 
 [features]
 default = ["std"]
@@ -49,4 +50,5 @@ std = [
 	"safe-mix/std",
 	"consensus-aura/std",
 	"offchain-primitives/std",
+	"yee-root-port/std",
 ]
