@@ -19,7 +19,7 @@ use crate::dev_param::process_dev_param;
 pub fn run<I, T, E>(args: I, exit: E, version: VersionInfo) -> error::Result<()> where
 	I: IntoIterator<Item = T>,
 	T: Into<std::ffi::OsString> + Clone,
-	E: IntoExit,
+	E: IntoExit<TriggerExit=CliTriggerExit<CliSignal>>,
 {
 	parse_and_execute::<service::Factory, NoCustom, YeeCliConfig, _, _, _, _, _>(
 		load_spec, &version, service::IMPL_NAME, args, exit,
@@ -32,17 +32,21 @@ pub fn run<I, T, E>(args: I, exit: E, version: VersionInfo) -> error::Result<()>
 			info!("Roles: {:?}", config.roles);
 
 		    process_dev_param::<service::Factory>(&mut config, &mut custom_args).map_err(|e| format!("{:?}", e))?;
-		    process_custom_args::<service::Factory>(&mut config, &custom_args).map_err(|e| format!("{:?}", e))?;
+		    process_custom_args::<service::Factory>(&mut config, &custom_args, &version).map_err(|e| format!("{:?}", e))?;
+
+		    let (exit, trigger_exit) = exit.into_exit();
+
+		    config.custom.trigger_exit = Some(Arc::new(trigger_exit));
 
 		    let runtime = Runtime::new().map_err(|e| format!("{:?}", e))?;
 			let executor = runtime.executor();
 			match config.roles {
-				ServiceRoles::LIGHT => run_until_exit(
+				ServiceRoles::LIGHT => run_until_exit::<_, _, E>(
 					runtime,
 				 	service::Factory::new_light(config, executor).map_err(|e| format!("{:?}", e))?,
 					exit
 				),
-				_ => run_until_exit(
+				_ => run_until_exit::<_, _, E>(
 					runtime,
 					service::Factory::new_full(config, executor).map_err(|e| format!("{:?}", e))?,
 					exit
@@ -62,7 +66,7 @@ fn load_spec(id: &str) -> Result<Option<chain_spec::ChainSpec>, String> {
 fn run_until_exit<T, C, E>(
 	mut runtime: Runtime,
 	service: T,
-	e: E,
+	e: E::Exit,
 ) -> error::Result<()>
 	where
 		T: Deref<Target=substrate_service::Service<C>>,
@@ -74,7 +78,7 @@ fn run_until_exit<T, C, E>(
 	let executor = runtime.executor();
 	informant::start(&service, exit.clone(), executor.clone());
 
-	let _ = runtime.block_on(e.into_exit().0);
+	let _ = runtime.block_on(e);
 	exit_send.fire();
 
 	// we eagerly drop the service so that the internal exit future is fired,

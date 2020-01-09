@@ -25,6 +25,7 @@ use crate::error;
 use crate::service::{NodeConfig};
 use yee_bootnodes_router;
 use yee_bootnodes_router::BootnodesRouterConf;
+use substrate_cli::VersionInfo;
 
 #[derive(Clone, Debug, Default, StructOpt)]
 pub struct YeeCliConfig {
@@ -45,7 +46,7 @@ pub struct YeeCliConfig {
 
 impl_augment_clap!(YeeCliConfig);
 
-pub fn process_custom_args<F>(config: &mut FactoryFullConfiguration<F>, custom_args: &YeeCliConfig) -> error::Result<()>
+pub fn process_custom_args<F>(config: &mut FactoryFullConfiguration<F>, custom_args: &YeeCliConfig, version: &VersionInfo) -> error::Result<()>
 where
     F: ServiceFactory<Configuration=NodeConfig>,
 {
@@ -65,6 +66,8 @@ where
     }
 
     config.custom.root_port = custom_args.root_port;
+    config.custom.version_commit = version.commit;
+    config.custom.version_version = version.version;
 
     info!("Custom params: ");
     info!("  root port: {:?}", config.custom.root_port);

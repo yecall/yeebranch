@@ -19,22 +19,26 @@
 
 mod error;
 
-const ROOT_PORT : u16 = 30335;
+const ROOT_PORT : u16 = 40334;
 const ROOT_BOOTNODES_ROUTER : &str = "http://127.0.0.1:50001";
+const PORT : u16 = 40333;
 
 pub struct RunParams{
     pub root_port: u16,
     pub root_bootnodes_routers: Vec<String>,
+    pub port: u16,
 }
 
 pub fn get_run_params() -> error::Result<RunParams>{
 
     let root_port = ROOT_PORT;
     let root_bootnodes_routers = vec![ROOT_BOOTNODES_ROUTER.to_string()];
+    let port = PORT;
 
     Ok(RunParams{
         root_port,
         root_bootnodes_routers,
+        port,
     })
 
 }

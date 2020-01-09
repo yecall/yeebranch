@@ -36,11 +36,13 @@ signal-hook = { version = "0.1.11", features = ["tokio-support"] }
 structopt = "0.2"
 
 # yeeroot
-yee-bootnodes-router = { package = "yee-bootnodes-router", git = "https://github.com/yeeco/yeeroot", tag = "v0.5" }
+yee-bootnodes-router = { package = "yee-bootnodes-router", git = "https://github.com/yeeco/yeeroot", branch = "gb/support-branch" }
+yee-consensus = { package = "yee-consensus-pow", git = "https://github.com/yeeco/yeeroot.git", branch = "gb/support-branch"}
 
 # yeebranch
 yee-root-port = { package = "yee-root-port", path = "srml/yee-root-port", default_features = false }
 yee-branch-dev = { package = "yee-branch-dev", path = "dev" }
+yee-root-chain = { package = "yee-root-chain", path = "root/chain" }
 
 [build-dependencies]
 vergen = "3"

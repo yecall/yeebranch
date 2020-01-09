@@ -22,6 +22,9 @@ use substrate_service::construct_service_factory;
 
 pub use substrate_executor::NativeExecutor;
 use yee_bootnodes_router::BootnodesRouterConf;
+use yee_root_chain;
+use crate::cli::{CliTriggerExit, CliSignal};
+use substrate_cli::TriggerExit;
 
 pub const IMPL_NAME : &str = "yee-branch-node";
 
@@ -38,6 +41,19 @@ pub struct NodeConfig {
 	inherent_data_providers: InherentDataProviders,
 	pub root_bootnodes_router_conf: Option<BootnodesRouterConf>,
 	pub root_port: Option<u16>,
+	pub version_commit: &'static str,
+	pub version_version: &'static str,
+	pub trigger_exit: Option<Arc<dyn yee_consensus::TriggerExit>>,
+}
+
+impl yee_consensus::TriggerExit for CliTriggerExit<CliSignal>{
+	fn trigger_restart(&self){
+		self.trigger_exit(CliSignal::Restart);
+	}
+
+	fn trigger_stop(&self){
+		self.trigger_exit(CliSignal::Stop);
+	}
 }
 
 construct_simple_protocol! {
@@ -71,7 +87,7 @@ construct_service_factory! {
 						inherents_pool: service.inherents_pool(),
 					});
 					let client = service.client();
-					executor.spawn(start_aura(
+					executor.clone().spawn(start_aura(
 						SlotDuration::get_or_compute(&*client)?,
 						key.clone(),
 						client.clone(),
@@ -83,6 +99,17 @@ construct_service_factory! {
 						service.config.force_authoring,
 					)?);
 				}
+
+				let root_chain_param = yee_root_chain::Params{
+					database_path: service.config.database_path.clone(),
+					keystore_path: service.config.keystore_path.clone(),
+					version_commit: service.config.custom.version_commit,
+					version_version: service.config.custom.version_version,
+					trigger_exit: service.config.custom.trigger_exit.clone().expect("qed"),
+					root_bootnodes_router_conf: service.config.custom.root_bootnodes_router_conf.clone(),
+					root_port: service.config.custom.root_port,
+				};
+				let root_chain = yee_root_chain::RootChain::new(root_chain_param, &executor).map_err(|e|format!("{:?}", e))?;
 
 				Ok(service)
 			}

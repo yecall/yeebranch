@@ -22,6 +22,9 @@ use substrate_service::{FactoryFullConfiguration, ServiceFactory};
 use crate::service::NodeConfig;
 use crate::custom_param::YeeCliConfig;
 use log::info;
+use network::multiaddr::Protocol;
+use std::net::Ipv4Addr;
+use std::iter;
 
 pub fn process_dev_param<F>(config: &mut FactoryFullConfiguration<F>, custom_args: &mut YeeCliConfig) -> error::Result<()>
     where F: ServiceFactory<Configuration=NodeConfig> {
@@ -35,10 +38,16 @@ pub fn process_dev_param<F>(config: &mut FactoryFullConfiguration<F>, custom_arg
         info!("Dev params: ");
         info!("  root port: {}", run_params.root_port);
         info!("  root bootnodes routers: {:?}", run_params.root_bootnodes_routers);
-        info!("  params: {}", get_dev_params(run_params.root_port, &run_params.root_bootnodes_routers));
+        info!("  port: {:?}", run_params.port);
+        info!("  params: {}", get_dev_params(run_params.root_port, &run_params.root_bootnodes_routers, run_params.port));
 
         custom_args.root_port = Some(run_params.root_port);
         custom_args.root_bootnodes_routers = run_params.root_bootnodes_routers;
+        config.network.listen_addresses = vec![
+            iter::once(Protocol::Ip4(Ipv4Addr::new(0, 0, 0, 0)))
+                .chain(iter::once(Protocol::Tcp(run_params.port)))
+                .collect()
+        ];
 
     }
 
@@ -47,9 +56,10 @@ pub fn process_dev_param<F>(config: &mut FactoryFullConfiguration<F>, custom_arg
 
 fn get_dev_params(
     root_port: u16,
-    root_bootnodes_routers: &Vec<String>
+    root_bootnodes_routers: &Vec<String>,
+    port: u16
 ) -> String{
     let root_bootnodes_routers = root_bootnodes_routers.iter().map(|x| format!("--root-bootnodes-routers={}", x)).collect::<Vec<String>>().join("");
-    let params = format!("--root-port={} {}", root_port, root_bootnodes_routers);
+    let params = format!("--root-port={} {} --port={}", root_port, root_bootnodes_routers, port);
     params
 }
