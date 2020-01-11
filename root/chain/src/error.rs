@@ -3,7 +3,8 @@
 use error_chain::*;
 
 error_chain! {
-	foreign_links {
+	links {
+		Cli(substrate_cli::error::Error, substrate_cli::error::ErrorKind) #[doc="Cli error"];
 	}
 	errors {
 		/// Not implemented yet

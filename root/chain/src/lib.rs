@@ -17,9 +17,13 @@
 
 
 use std::path::PathBuf;
-use substrate_service::{ChainSpec, RuntimeGenesis, FactoryFullConfiguration, Configuration, ServiceFactory, Roles, TaskExecutor, Arc, LightComponents, Components, Service};
+use substrate_service::{
+	ChainSpec, RuntimeGenesis, FactoryFullConfiguration, Configuration, ServiceFactory,
+	Roles, TaskExecutor, Arc, LightComponents, Components, Service, FactoryBlock,
+	FullClient, LightClient
+};
 use names::{Generator, Name};
-use yee_cli::{Factory, NodeConfig};
+use yee_cli::{Factory, NodeConfig, get_initial_info, InitialInfo, FactoryBlockNumber};
 use yee_bootnodes_router::BootnodesRouterConf;
 use std::time;
 use log::{info, warn};
@@ -32,6 +36,11 @@ use futures::stream::Stream;
 use sr_primitives::traits::As;
 use std::net::Ipv4Addr;
 use std::iter;
+use yee_sharding::{ShardingDigestItem, ScaleOutPhaseDigestItem};
+use sr_primitives::traits::{DigestItemFor, ProvideRuntimeApi};
+use substrate_client::ChainHead;
+use yee_sharding_primitives::{ShardingAPI};
+use yee_pow_primitives::YeePOWApi;
 
 pub mod error;
 
@@ -114,7 +123,16 @@ fn monitor_network<C: Components>(service: &Service<C>, executor: &TaskExecutor)
 	executor.spawn(display_notifications);
 }
 
-fn create_config<F: ServiceFactory<Configuration=NodeConfig<F>>>(params: &Params) -> error::Result<FactoryFullConfiguration<F>> {
+fn create_config<F>(params: &Params) -> error::Result<FactoryFullConfiguration<F>> where
+	F: ServiceFactory<Configuration=NodeConfig<F>>,
+	DigestItemFor<FactoryBlock<F>>: ShardingDigestItem<u16> + ScaleOutPhaseDigestItem<FactoryBlockNumber<F>, u16>,
+	FullClient<F>: ProvideRuntimeApi + ChainHead<FactoryBlock<F>>,
+	<FullClient<F> as ProvideRuntimeApi>::Api: ShardingAPI<FactoryBlock<F>> + YeePOWApi<FactoryBlock<F>>,
+	LightClient<F>: ProvideRuntimeApi + ChainHead<FactoryBlock<F>>,
+	<LightClient<F> as ProvideRuntimeApi>::Api: ShardingAPI<FactoryBlock<F>> + YeePOWApi<FactoryBlock<F>>,
+{
+
+	let shard_num = 0; //TODO
 
 	let spec_path = params.database_path.clone() + "/../../../conf/root-chain-spec.json";
 
@@ -135,12 +153,6 @@ fn create_config<F: ServiceFactory<Configuration=NodeConfig<F>>>(params: &Params
 
 	config.custom.trigger_exit = Some(params.trigger_exit.clone());
 
-	let shard_num = 0; //TODO
-
-	config.custom.shard_num = shard_num;
-
-	config.custom.shard_count = 4; //TODO
-
 	config.network.client_version = config.client_id();
 
 	config.network.boot_nodes = params.root_bootnodes_router_conf.as_ref()
@@ -157,6 +169,12 @@ fn create_config<F: ServiceFactory<Configuration=NodeConfig<F>>>(params: &Params
 		},
 		_ => (),
 	}
+
+	let InitialInfo{context, shard_num, shard_count, ..} = get_initial_info::<F>(&config, shard_num)?;
+
+	config.custom.shard_num = shard_num;
+	config.custom.shard_count = shard_count;
+	config.custom.context = Some(context);
 
 	Ok(config)
 
