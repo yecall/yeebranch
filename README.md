@@ -51,21 +51,49 @@ Yeebranch is designed as layer 2 of YeeCo.
     rustup component add <name> # install component
     ```
 
+### Prepare yeeroot chain resources
+
+Yeebranch runs a light node of [yeeroot chain](https://github.com/yeeco/yeeroot) internally, so it needs the following resources of the yeeroot chain:
+
+ - Runtime WASM
+    
+    After you [build yeeroot project](https://github.com/yeeco/yeeroot#building), 
+    You will get the `Runtime WASM` on `<yeeroot_project_base_dir>/runtime/wasm/target/wasm32-unknown-unknown/release/yee_runtime_wasm.compact.wasm`
+ 
+ - Chain spec 
+ 
+    Run `build-spec` to export chain spec file:
+     ```sh
+     $ yee build-spec --dev > root_chain_sepc.json
+     ```
+   
 ### Building
+
 ```sh
 $ cd <project_base_dir>/runtime/wasm
 $ sh build.sh
 $ cd <project_base_dir>
-$ cargo build
+$ WASM_CODE_PATH=<yeeroot_project_base_dir>/runtime/wasm/target/wasm32-unknown-unknown/release/yee_runtime_wasm.compact.wasm cargo build
 ```
 
 ## Usage
 
 ### Start
 
-Start the node
+1. Deploy yeeroot chain sepc
+    
+   ```sh
+   $ mkdir -p <yeebranch_run_base_path>/conf
+   $ cp root_chain_sepc.json <yeebranch_run_base_path>/conf
+   ``` 
+   
+   <yeebranch_run_base_path> is: 
+   `~/Library/Application\ Support/YeeBranch/`
+   or the one you specify by `./yee-branch --base-path=<yeebranch_run_base_path>`, 
+
+1. Start the node
     ```sh
-    $ ./yee-branch --dev --alice
+    $ ./yee-branch --base-path=<yeebranch_run_base_path> --dev --alice
     ```
 
 ## Contributing

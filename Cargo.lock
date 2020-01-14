@@ -480,7 +480,7 @@ dependencies = [
 [[package]]
 name = "crfg-primitives"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "sr-primitives",
@@ -858,7 +858,7 @@ dependencies = [
 [[package]]
 name = "finality-tracker"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "sr-primitives",
@@ -3703,7 +3703,7 @@ dependencies = [
 [[package]]
 name = "srml-finality-tracker"
 version = "1.0.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "hex-literal",
  "parity-codec",
@@ -5215,7 +5215,7 @@ checksum = "796f7e48bef87609f7ade7e06495a87d5cd06c7866e6a5cbfceffc558a243737"
 [[package]]
 name = "util"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "sr-primitives",
@@ -5581,7 +5581,7 @@ dependencies = [
 [[package]]
 name = "yee-bootnodes-router"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "app_dirs",
  "clap",
@@ -5679,7 +5679,7 @@ dependencies = [
 [[package]]
 name = "yee-cli"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "ansi_term",
  "crfg-primitives",
@@ -5744,7 +5744,7 @@ dependencies = [
 [[package]]
 name = "yee-consensus-pow"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "ansi_term",
  "futures",
@@ -5777,7 +5777,7 @@ dependencies = [
 [[package]]
 name = "yee-consensus-pow-primitives"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "sr-primitives",
  "substrate-client",
@@ -5787,7 +5787,7 @@ dependencies = [
 [[package]]
 name = "yee-context"
 version = "0.6.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "sr-primitives",
  "yee-consensus-pow-primitives",
@@ -5796,7 +5796,7 @@ dependencies = [
 [[package]]
 name = "yee-crfg"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "crfg-primitives",
  "finality-grandpa",
@@ -5822,7 +5822,7 @@ dependencies = [
 [[package]]
 name = "yee-dev"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "error-chain",
  "substrate-network",
@@ -5832,7 +5832,7 @@ dependencies = [
 [[package]]
 name = "yee-foreign-chain"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "exit-future",
  "log 0.4.6",
@@ -5851,7 +5851,7 @@ dependencies = [
 [[package]]
 name = "yee-foreign-network"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "ansi_term",
  "bitflags",
@@ -5884,7 +5884,7 @@ dependencies = [
 [[package]]
 name = "yee-foreign-network-libp2p"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "byteorder 1.3.1",
  "bytes",
@@ -5910,7 +5910,7 @@ dependencies = [
 [[package]]
 name = "yee-foreign-relay"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "ansi_term",
  "finality-tracker",
@@ -5937,7 +5937,7 @@ dependencies = [
 [[package]]
 name = "yee-foreign-vnetwork"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "bitflags",
  "crossbeam-channel",
@@ -5964,7 +5964,7 @@ dependencies = [
 [[package]]
 name = "yee-jsonrpc-types"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "bytes",
  "faster-hex 0.3.1",
@@ -5979,7 +5979,7 @@ dependencies = [
 [[package]]
 name = "yee-lru-cache"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "fnv",
  "linked-hash-map",
@@ -5988,7 +5988,7 @@ dependencies = [
 [[package]]
 name = "yee-merkle"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "log 0.4.6",
  "merkle_light",
@@ -6000,7 +6000,7 @@ dependencies = [
 [[package]]
 name = "yee-mining"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "byteorder 1.3.1",
  "chrono",
@@ -6037,7 +6037,7 @@ dependencies = [
 [[package]]
 name = "yee-mining2"
 version = "0.5.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "error-chain",
  "exit-future",
@@ -6064,7 +6064,7 @@ dependencies = [
 [[package]]
 name = "yee-primitives"
 version = "0.5.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "bech32",
  "serde",
@@ -6106,7 +6106,7 @@ dependencies = [
 [[package]]
 name = "yee-rpc"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "error-chain",
  "jsonrpc-core 10.1.0",
@@ -6136,7 +6136,7 @@ dependencies = [
 [[package]]
 name = "yee-runtime"
 version = "1.0.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "safe-mix",
@@ -6167,7 +6167,7 @@ dependencies = [
 [[package]]
 name = "yee-serde-hex"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "impl-serde",
  "num-bigint",
@@ -6178,7 +6178,7 @@ dependencies = [
 [[package]]
 name = "yee-sharding"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "log 0.4.6",
  "parity-codec",
@@ -6190,7 +6190,7 @@ dependencies = [
 [[package]]
 name = "yee-sharding-primitives"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "sr-primitives",
@@ -6201,7 +6201,7 @@ dependencies = [
 [[package]]
 name = "yee-srml-balances"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "hex",
  "hex-literal",
@@ -6221,7 +6221,7 @@ dependencies = [
 [[package]]
 name = "yee-srml-crfg"
 version = "1.0.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "crfg-primitives",
  "parity-codec",
@@ -6240,7 +6240,7 @@ dependencies = [
 [[package]]
 name = "yee-srml-executive"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "serde",
@@ -6258,7 +6258,7 @@ dependencies = [
 [[package]]
 name = "yee-srml-pow"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "serde",
@@ -6275,7 +6275,7 @@ dependencies = [
 [[package]]
 name = "yee-srml-sharding"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "parity-codec",
  "serde",
@@ -6289,7 +6289,7 @@ dependencies = [
 [[package]]
 name = "yee-stop-handler"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "crossbeam-channel",
  "futures",
@@ -6299,7 +6299,7 @@ dependencies = [
 [[package]]
 name = "yee-switch"
 version = "0.1.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "app_dirs",
  "clap",
@@ -6336,7 +6336,7 @@ dependencies = [
 [[package]]
 name = "yee-switch-rpc"
 version = "1.0.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "error-chain",
  "futures",
@@ -6371,7 +6371,7 @@ dependencies = [
 [[package]]
 name = "yee-switch-rpc-servers"
 version = "1.0.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "jsonrpc-http-server 10.1.0",
  "jsonrpc-pubsub 10.1.0",
@@ -6385,7 +6385,7 @@ dependencies = [
 [[package]]
 name = "yee-util"
 version = "0.4.0"
-source = "git+https://github.com/yeeco/yeeroot?branch=gb/support-branch#42d0c9d03ecd7648a889de2d1999ee093eecc4cd"
+source = "git+https://github.com/yeeco/yeeroot.git?rev=122b495739b05ae091401cec1fe68a57a9ad7f95#122b495739b05ae091401cec1fe68a57a9ad7f95"
 dependencies = [
  "fnv",
  "parking_lot 0.7.1",
