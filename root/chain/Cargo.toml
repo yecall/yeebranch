@@ -20,9 +20,9 @@ ansi_term = "0.11"
 futures = "0.1.17"
 
 # yeeroot
-yee-cli = { git = "https://github.com/yeeco/yeeroot.git", rev = "122b495739b05ae091401cec1fe68a57a9ad7f95", features = ["custom-wasm-code"] }
-yee-consensus = { package = "yee-consensus-pow", git = "https://github.com/yeeco/yeeroot.git", rev = "122b495739b05ae091401cec1fe68a57a9ad7f95"}
-yee-bootnodes-router = { package = "yee-bootnodes-router", git = "https://github.com/yeeco/yeeroot", rev = "122b495739b05ae091401cec1fe68a57a9ad7f95" }
-yee-sharding = { package = "yee-sharding", git = "https://github.com/yeeco/yeeroot.git", rev = "122b495739b05ae091401cec1fe68a57a9ad7f95"}
-yee-sharding-primitives = { package = "yee-sharding-primitives", git = "https://github.com/yeeco/yeeroot.git", rev = "122b495739b05ae091401cec1fe68a57a9ad7f95"}
-yee-pow-primitives = { package = "yee-consensus-pow-primitives", git = "https://github.com/yeeco/yeeroot.git", rev = "122b495739b05ae091401cec1fe68a57a9ad7f95"}
+yee-cli = { git = "https://github.com/yeeco/yeeroot.git", branch = "zh/assets", features = ["custom-wasm-code"] }
+yee-consensus = { package = "yee-consensus-pow", git = "https://github.com/yeeco/yeeroot.git", branch = "zh/assets"}
+yee-bootnodes-router = { package = "yee-bootnodes-router", git = "https://github.com/yeeco/yeeroot", branch = "zh/assets" }
+yee-sharding = { package = "yee-sharding", git = "https://github.com/yeeco/yeeroot.git", branch = "zh/assets"}
+yee-sharding-primitives = { package = "yee-sharding-primitives", git = "https://github.com/yeeco/yeeroot.git", branch = "zh/assets"}
+yee-pow-primitives = { package = "yee-consensus-pow-primitives", git = "https://github.com/yeeco/yeeroot.git", branch = "zh/assets"}

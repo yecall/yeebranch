@@ -31,11 +31,11 @@ use substrate_cli::VersionInfo;
 pub struct YeeCliConfig {
 
     /// Specify a list of root chain bootnodes-routers
-    #[structopt(long = "bootnodes-routers", value_name = "URL")]
+    #[structopt(long = "root-bootnodes-routers", value_name = "URL")]
     pub root_bootnodes_routers: Vec<String>,
 
     /// Specify p2p protocol TCP port to participate to root chain
-    #[structopt(long = "foreign-port", value_name = "PORT")]
+    #[structopt(long = "root-port", value_name = "PORT")]
     pub root_port: Option<u16>,
 
     /// Whether use dev params or not

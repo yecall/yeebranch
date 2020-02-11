@@ -64,7 +64,7 @@ Yeebranch runs a light node of [yeeroot chain](https://github.com/yeeco/yeeroot)
  
     Run `build-spec` to export chain spec file:
      ```sh
-     $ yee build-spec --dev > root_chain_sepc.json
+     $ yee build-spec --dev > root-chain-sepc.json
      ```
    
 ### Building
@@ -84,7 +84,7 @@ $ WASM_CODE_PATH=<yeeroot_project_base_dir>/runtime/wasm/target/wasm32-unknown-u
     
    ```sh
    $ mkdir -p <yeebranch_run_base_path>/conf
-   $ cp root_chain_sepc.json <yeebranch_run_base_path>/conf
+   $ cp root-chain-sepc.json <yeebranch_run_base_path>/conf
    ``` 
    
    <yeebranch_run_base_path> is: 
@@ -93,9 +93,11 @@ $ WASM_CODE_PATH=<yeeroot_project_base_dir>/runtime/wasm/target/wasm32-unknown-u
 
 1. Start the node
     ```sh
-    $ ./yee-branch --base-path=<yeebranch_run_base_path> --dev --alice
+    $ ./yee-branch --base-path=<yeebranch_run_base_path> --dev --alice --root-bootnodes-routers=<bootnodes_routers_path>
     ```
 
+    <bootnodes_routers_path> is:
+    The bootnodes-routers listen address. Such as: `http://0.0.0.0:50001`
 ## Contributing
 
 Feel free to dive in! [Open an issue](https://github.com/yeeco/yeebranch/issues).

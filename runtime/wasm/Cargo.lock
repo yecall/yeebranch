@@ -3369,6 +3369,7 @@ dependencies = [
  "substrate-consensus-authorities 1.0.0 (git+https://github.com/yeeco/substrate.git?branch=yee-v1.0)",
  "substrate-offchain-primitives 0.1.0 (git+https://github.com/yeeco/substrate.git?branch=yee-v1.0)",
  "substrate-primitives 1.0.0 (git+https://github.com/yeeco/substrate.git?branch=yee-v1.0)",
+ "yee-root-port 0.6.0",
 ]
 
 [[package]]
@@ -3376,6 +3377,16 @@ name = "yee-branch-runtime-wasm"
 version = "0.6.0"
 dependencies = [
  "yee-branch-runtime 0.6.0",
+]
+
+[[package]]
+name = "yee-root-port"
+version = "0.6.0"
+dependencies = [
+ "serde 1.0.89 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sr-primitives 1.0.0 (git+https://github.com/yeeco/substrate.git?branch=yee-v1.0)",
+ "srml-support 1.0.0 (git+https://github.com/yeeco/substrate.git?branch=yee-v1.0)",
+ "srml-system 1.0.0 (git+https://github.com/yeeco/substrate.git?branch=yee-v1.0)",
 ]
 
 [[package]]
